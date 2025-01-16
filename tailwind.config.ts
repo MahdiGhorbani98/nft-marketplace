@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   content: [
@@ -8,6 +9,9 @@ export default {
   ],
   darkMode: "class",
   theme: {
+    fontFamily: {
+      sans: ["var(--font-sans)", ...fontFamily.sans],
+    },
     extend: {
       colors: {
         "regal-blue": "#243c5a",
@@ -67,9 +71,6 @@ export default {
       xs: { max: "400px" },
       minmd: "1700px",
       minlg: "2100px",
-    },
-    fontFamily: {
-      poppins: ["Poppins", "sans-serif"],
     },
   },
   variants: {
