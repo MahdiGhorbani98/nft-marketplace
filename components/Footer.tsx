@@ -1,7 +1,5 @@
-"use client";
 import React from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 
 import images from "../assets";
 import Button from "./shared/Button";
@@ -28,8 +26,6 @@ const FooterLinks = ({ heading, items, extraClasses }: FooterLinksType) => (
 );
 
 const Footer = () => {
-  const { theme } = useTheme();
-
   return (
     <footer className="flexCenter flex-col border-t dark:border-nft-black-1 border-nft-gray-1 sm:py-8 py-16">
       <div className="w-full md:w-4/5 flex md:flex-row flex-col items-center md:items-start px-4 sm:px-16">
@@ -99,7 +95,7 @@ const Footer = () => {
                   width={24}
                   height={24}
                   alt="social"
-                  className={theme === "light" ? "filter invert" : undefined}
+                  className={"filter invert dark:invert-0"}
                 />
               </div>
             ))}
