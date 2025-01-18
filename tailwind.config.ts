@@ -24,6 +24,7 @@ export default {
         "nft-black-3": "#2A2D3A",
         "nft-black-4": "#24252D",
         "nft-red-violet": "#DA18A3",
+        "nft-red-violet-lighter": "#EB1484",
         "file-active": "#2196f3",
         "file-accept": "#00e676",
         "file-reject": "#ff1744",
@@ -65,12 +66,22 @@ export default {
       },
     },
     screens: {
-      lg: { max: "1800px" },
-      md: { max: "990px" },
-      sm: { max: "600px" },
-      xs: { max: "400px" },
-      minmd: "1700px",
-      minlg: "2100px",
+      xs: "319px",
+
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
     },
   },
   variants: {

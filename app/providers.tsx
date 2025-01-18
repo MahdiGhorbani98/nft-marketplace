@@ -11,6 +11,8 @@ export interface ProvidersProps {
 }
 
 export function Providers({ children, themeProps }: ProvidersProps) {
+  console.log("Providers.tsx");
+
   return (
     <ThemeProvider {...themeProps}>
       <Toaster position="top-center" />
