@@ -23,7 +23,7 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <Navbar />
-          {children}
+          <div className="pt-20 sm:pt-32">{children}</div>
           <Footer />
         </Providers>
       </body>
