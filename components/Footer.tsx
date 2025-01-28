@@ -11,13 +11,13 @@ interface FooterLinksType {
 }
 const FooterLinks = ({ heading, items, extraClasses }: FooterLinksType) => (
   <div className={`flex-1 justify-start items-start ${extraClasses}`}>
-    <h3 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl mb-10">
+    <h3 className="font-sans dark:text-white text-nft-black-1 font-semibold text-xl mb-10">
       {heading}
     </h3>
     {items.map((item, index) => (
       <p
         key={item + index}
-        className="font-poppins dark:text-white text-nft-black-1 font-normal text-base cursor-pointer dark:hover:text-nft-gray-1 hover:text-nft-black-1 my-3"
+        className="font-sans dark:text-white text-nft-black-1 font-normal text-base cursor-pointer dark:hover:text-nft-gray-1 hover:text-nft-black-1 my-3"
       >
         {item}
       </p>
@@ -42,14 +42,14 @@ const Footer = () => {
               CryptoKet
             </p>
           </div>
-          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-base mt-6">
+          <p className="font-sans dark:text-white text-nft-black-1 font-semibold text-base mt-6">
             Get the latest updates
           </p>
           <div className="flexBetween w-full md:w-[350px] xl:w-[450px] mt-6 dark:bg-nft-black-2 bg-white border dark:border-nft-black-2 border-nft-gray-2 rounded-2xl">
             <input
               type="email"
               placeholder="Your Email"
-              className="h-full flex-1 w-full dark:bg-nft-black-2 bg-white px-4 rounded-2xl font-poppins dark:text-white text-nft-black-1 font-normal text-xs lg:text-lg outline-none"
+              className="h-full flex-1 w-full dark:bg-nft-black-2 bg-white px-4 rounded-2xl font-sans dark:text-white text-nft-black-1 font-normal text-xs lg:text-lg outline-none"
             />
             <div className="flex-initial">
               <Button btnName="Email me!" btnType="primary" />
@@ -77,7 +77,7 @@ const Footer = () => {
 
       <div className="flexCenter w-full mt-5 border-t dark:border-nft-black-1 border-nft-gray-1 px-4 sm:px-16">
         <div className="flexBetween sm:flex-row w-full md:w-4/5 flex-col mt-7">
-          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-base">
+          <p className="font-sans dark:text-white text-nft-black-1 font-semibold text-base">
             CrpytoKet, Inc. All Rights Reserved
           </p>
           <div className="flex flex-row mt-4 sm:mt-0">

@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "@/components/features/home/Banner";
-import BestCreators from "@/components/features/home/BestCreators";
+import BestCreators from "@/components/features/home/bestCreators/BestCreators";
+import HotBids from "@/components/features/home/hotBids/HotBids";
 
 export default function Home() {
   console.log("page.tsx");
@@ -17,6 +18,7 @@ export default function Home() {
           parentStyle="justify-start mb-7  md:h-72 h-44 sm:h-60 sm:p-12 p-4  rounded-3xl"
         />
         <BestCreators />
+        <HotBids />
       </div>
     </div>
   );

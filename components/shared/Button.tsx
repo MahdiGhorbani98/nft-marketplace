@@ -1,8 +1,8 @@
 import React from "react";
 const primaryBtn =
-  "nft-gradient text-sm lg:text-lg py-2 px-6 lg:py-3 lg:px-8 font-poppins font-semibold text-white rounded-2xl";
+  "nft-gradient text-sm lg:text-lg py-2 px-6 lg:py-3 lg:px-8 font-sans font-semibold text-white rounded-2xl";
 const outlineBtn =
-  "border border-nft-red-violet-lighter bg-transparent font-poppins font-semibold text-sm lg:text-lg py-2 px-6 lg:py-3 lg:px-8 text-nft-red-violet  !rounded-2xl";
+  "border border-nft-red-violet-lighter bg-transparent font-sans font-semibold text-sm lg:text-lg py-2 px-6 lg:py-3 lg:px-8 text-nft-red-violet  !rounded-2xl";
 
 interface ButtonType {
   btnName: string;

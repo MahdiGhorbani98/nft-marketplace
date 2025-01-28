@@ -1,13 +1,186 @@
+"use client";
 import React from "react";
+import { useState, useMemo } from "react";
+// import { create as ipfsHttpClient } from "ipfs-http-client";
+// import { useRouter } from "next/router";
+import { useDropzone } from "react-dropzone";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
-const CreateNFT = () => {
+// import { NFTContext } from "@/context/NFTContext";
+import images from "@/assets";
+import Button from "@/components/shared/Button";
+import Input from "@/components/Input";
+// const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+
+const CreateItem = () => {
+  // const { createSale, isLoadingNFT } = useContext(NFTContext);
+  // const [fileUrl, setFileUrl] = useState<string | null>(null);
+  const { theme } = useTheme();
+
+  // interface File {
+  //   path: string;
+  // }
+
+  // interface UploadToInfura {
+  //   (file: File): Promise<void>;
+  // }
+
+  // const uploadToInfura: UploadToInfura = async (file) => {
+  //   try {
+  //     const added = await client.add({ content: file });
+
+  //     const url: string = `https://ipfs.infura.io/ipfs/${added.path}`;
+
+  //     setFileUrl(url);
+  //   } catch (error) {
+  //     console.log("Error uploading file: ", error);
+  //   }
+  // };
+
+  // const onDrop = useCallback(async (acceptedFile) => {
+  //   await uploadToInfura(acceptedFile[0]);
+  // }, []);
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+  } = useDropzone({
+    // onDrop,
+    accept: "image/*",
+    maxSize: 5000000,
+  });
+
+  // add tailwind classes acording to the file status
+  const fileStyle = useMemo(
+    () =>
+      `dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed  
+       ${isDragActive ? " border-file-active " : ""} 
+       ${isDragAccept ? " border-file-accept " : ""} 
+       ${isDragReject ? " border-file-reject " : ""}`,
+    [isDragActive, isDragReject, isDragAccept]
+  );
+
+  const [formInput, updateFormInput] = useState({
+    price: "",
+    name: "",
+    description: "",
+  });
+  // const router = useRouter();
+
+  // const createMarket = async () => {
+  //   const { name, description, price } = formInput;
+  //   if (!name || !description || !price || !fileUrl) return;
+  //   /* first, upload to IPFS */
+  //   const data = JSON.stringify({ name, description, image: fileUrl });
+  //   try {
+  //     const added = await client.add(data);
+  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+  //     /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
+  //     await createSale(url, formInput.price);
+  //     router.push("/");
+  //   } catch (error) {
+  //     console.log("Error uploading file: ", error);
+  //   }
+  // };
+
+  // if (isLoadingNFT) {
+  //   return (
+  //     <div className="flexCenter" style={{ height: "51vh" }}>
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-red-500 dark:text-green-500">CreateNFT</h1>
+    <div className="flex justify-center px-4 sm:p-12">
+      <div className="md:w-3/5 w-full">
+        <h1 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl">
+          Create new item
+        </h1>
+
+        <div className="mt-16">
+          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
+            Upload file
+          </p>
+          <div className="mt-4">
+            <div {...getRootProps()} className={fileStyle}>
+              <input {...getInputProps()} />
+              <div className="flexCenter flex-col text-center">
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
+                  JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 100mb.
+                </p>
+
+                <div className="my-12 w-full flex justify-center">
+                  <Image
+                    src={images.upload}
+                    width={100}
+                    height={100}
+                    objectFit="contain"
+                    alt="file upload"
+                    className={theme === "light" ? "filter invert" : undefined}
+                  />
+                </div>
+
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm">
+                  Drag and Drop File
+                </p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm mt-2">
+                  Or browse media on your device
+                </p>
+              </div>
+            </div>
+            {/* {fileUrl && (
+              <aside>
+                <div>
+                  <img src={fileUrl} alt="Asset_file" />
+                </div>
+              </aside>
+            )} */}
+          </div>
+        </div>
+
+        <Input
+          inputType="input"
+          title="Name"
+          placeholder="Asset Name"
+          handleClick={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateFormInput({ ...formInput, name: e.target.value })
+          }
+        />
+
+        <Input
+          inputType="textarea"
+          title="Description"
+          placeholder="Asset Description"
+          handleClick={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            updateFormInput({ ...formInput, description: e.target.value })
+          }
+        />
+
+        <Input
+          inputType="number"
+          title="Price"
+          placeholder="Asset Price"
+          handleClick={(e: React.ChangeEvent<HTMLInputElement>) =>
+            updateFormInput({ ...formInput, price: e.target.value })
+          }
+        />
+
+        <div className="mt-7 w-full flex justify-end">
+          <Button
+            btnName="Create Item"
+            btnType="primary"
+            classStyles="rounded-xl"
+            // handleClick={createMarket}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default CreateNFT;
+export default CreateItem;
