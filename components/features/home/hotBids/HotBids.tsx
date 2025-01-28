@@ -2,7 +2,7 @@
 import React from "react";
 import NFTCard from "./NFTCard";
 
-// interface HotBids {}
+// interface HotBids key {}
 
 const HotBids = () => {
   console.log("HotBids.tsx");
